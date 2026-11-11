@@ -22,7 +22,7 @@ import com.jcaa.usersmanagement.infrastructure.adapter.email.JavaMailEmailSender
 import com.jcaa.usersmanagement.infrastructure.adapter.email.SmtpConfig;
 import com.jcaa.usersmanagement.infrastructure.adapter.persistence.config.DatabaseConfig;
 import com.jcaa.usersmanagement.infrastructure.adapter.persistence.config.DatabaseConnectionFactory;
-import com.jcaa.usersmanagement.infrastructure.adapter.persistence.repository.SoldierRepositoryInMemory;
+import com.jcaa.usersmanagement.infrastructure.adapter.persistence.repository.SoldierRepositoryMySQL;
 import com.jcaa.usersmanagement.infrastructure.adapter.persistence.repository.UserRepositoryMySQL;
 
 import com.jcaa.usersmanagement.infrastructure.entrypoint.desktop.controller.SoldierController;
@@ -124,8 +124,8 @@ public final class DependencyContainer {
         // CONFIGURACION DE SOLDADOS
         // ==========================================
 
-        final SoldierRepositoryInMemory soldierRepository =
-                new SoldierRepositoryInMemory();
+        final SoldierRepositoryMySQL soldierRepository =
+        new SoldierRepositoryMySQL(connection);
 
         final ManageSoldierUseCase soldierUseCase =
                 new ManageSoldierService(soldierRepository);
