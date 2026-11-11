@@ -32,6 +32,11 @@ public final class SoldierManagementCli {
             System.out.println("0. Volver");
             System.out.print("Opcion: ");
 
+            if (!scanner.hasNextLine()) {
+                System.out.println("\nLa entrada de consola se ha cerrado.");
+                return;
+            }
+
             option = scanner.nextLine().trim();
 
             try {
